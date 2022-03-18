@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<windows.h>
+#include<conio.h>
+char map[9][12]={
+	{"*#*********"},
+	{"***###*###*"},
+	{"###**#****#"},
+	{"*#**###**#*"},
+	{"***********"},
+	{"#####*##*##"},
+	{"**#*****#*E"},
+	{"***#*###**#"},
+	{"*#*********"},
+};
+void print_map()
+{
+	for(int i=0;i<9;i++)
+	{
+		puts(map[i]);
+	}
+}
+int curX,curY;
+void show_biaobiao(int curX,int curY)
+{
+	COORD pos;
+	pos.X=curX;
+	pos.Y=curY;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),pos);
+}
+int main()
+{
+	while(1)
+	{
+		system("cls");
+		print_map();
+		show_biaobiao(curX,curY);
+		char shuru=getch();
+		int w;
+		if(shuru=='w') v=1;
+		if(shuru=='s') v=2;
+		if(shuru=='a') v=3;
+		if(shuru=='d') v=4;
+		switch(v)
+		{
+		case 1:if((curY-1)>=0 && (map[curY-1][curX]=='*'||map[curY-1][curX]=='E')) curY--;break;
+		case 2:if((curY+1)<9 && (map[curY+1][curX]=='*'||map[curY+1][curX]=='E')) curY++;break;
+		case 3:if((curX-1)>=0 && (map[curY][curX-1]=='*'||map[curY][curX-1]=='E')) curX--;break;
+		case 4:if((curX+1)<11 && (map[curY][curX+1]=='*'||map[curY][curX+1]=='E')) curX++;break;
+		}
+		if(map[curY][curX]=='E')
+		{
+			break;
+		}
+	}
+	printf("还是聪明，还是走出来了！");
+}
