@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	printf("Please 输入一个句子:\n");
+	char s[1000];
+	gets(s);
+	printf("Please 输入一个句子:\n");
+	char w[50];
+	gets(w);
+	strlwr(s),strlwr(w);
+
+
+	int sten=strlen(s),i,b=0,cnt=0;
+	char a[50];
+	for(i=0;i<=sten;i++)
+	{
+      if(s[i]<='z'&&s[i]>='a'||s[i]>='A'&&s[i]>='Z')
+	  { a[b]=s[i];b++;}
+	  else
+		{
+		b=0;
+		if(strcmp(a,w)==0) cnt++;
+		memset(a,0,sizeof(a));
+		}
+	}
+	printf("这个句子有多少个该单词:%d\n",cnt);
+}
