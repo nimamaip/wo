@@ -1,0 +1,365 @@
+#include<stdio.h>
+#include <string.h>
+
+struct Account//定义账户
+{   
+	char name[100];
+	char idCard[19];
+	char username[100];
+	char password[7];
+	char tel[12];
+	char balance[100];
+	float money;
+};
+
+typedef struct Account Account;
+
+Account a[100];
+int i = 0;
+
+
+void signIn()//登录
+{
+	FILE* fp = fopen("D:/atm.txt", "r");
+	if (fp != NULL)
+	{
+		int j = 0;
+		while (!feof(fp))
+		{
+			fscanf(fp,"%s\t%s\t%s\t%s\t%s\n",
+				a[j].name, a[j].idCard, a[j].username, a[j].password, a[j].tel);
+			j++;
+		}
+	}
+}
+
+
+void signUp1()//开户（中文）
+{
+	printf("请输入姓名：\n");
+	scanf_s("%s", a[i].name, sizeof(a[i].name));
+
+	printf("请输入身份证：\n");
+	scanf_s("%s", a[i].idCard, sizeof(a[i].idCard));
+
+	printf("请输入账号：\n");
+	scanf_s("%s", a[i].username, sizeof(a[i].username));
+
+	printf("请输入密码：\n");
+	scanf_s("%s", a[i].password, sizeof(a[i].password));
+
+	printf("请输入电话：\n");
+	scanf_s("%s", a[i].tel, sizeof(a[i].tel));
+
+	a[i].money = 0.0f;
+	
+
+	FILE* fp = fopen("D:/atm.txt", "a");//存入文件（a表示追加写入）
+	if (fp != NULL)
+	{
+		fprintf(fp, "%s\t%s\t%s\t%s\t%s\n",
+			a[i].name, a[i].idCard, a[i].username, a[i].password, a[i].tel);
+		fclose(fp);
+	}
+
+	i++;
+	printf("注册成功!\n");
+	printf("请继续按菜单操作\n");
+}
+
+void signUp2()//开户（英文）
+{
+	printf("Please enter your name：\n");
+	scanf_s("%s", a[i].name, sizeof(a[i].name));
+
+	printf("Please enter your ID number：\n");
+	scanf_s("%s", a[i].idCard, sizeof(a[i].idCard));
+
+	printf("Please enter the account number：\n");
+	scanf_s("%s", a[i].username, sizeof(a[i].username));
+
+	printf("Please input a password：\n");
+	scanf_s("%s", a[i].password, sizeof(a[i].password));
+
+	printf("Please enter your mobile number：\n");
+	scanf_s("%s", a[i].tel, sizeof(a[i].tel));
+
+	a[i].money = 0.0f;
+
+
+	FILE* fp = fopen("D:/atm.txt", "a");//存入文件（a表示追加写入）
+	if (fp != NULL)
+	{
+		fprintf(fp, "%s\t%s\t%s\t%s\t%s\n",
+			a[i].name, a[i].idCard, a[i].username, a[i].password, a[i].tel);
+		fclose(fp);
+	}
+	i++;
+
+	printf("Created successfully!\n");
+	printf("Please continue to press the menu\n");
+}
+
+void printAllAccount()//打印所有账户
+{
+	for (int j = 0; j < i; j++)
+	{
+		printf("%s\t%s\n", a[j].name, a[j].username);
+	}
+}
+
+void showChineseMenu()//中文菜单
+{
+	printf("按1,登录\n");
+	printf("按2,开户\n");
+	printf("按3,退出\n");
+	printf("按4,打印所有帐户\n");
+	while (1)
+	{
+		char c;
+		scanf_s(" %c", &c, sizeof(c));
+		if (c == '1')
+		{
+			signIn();
+		}
+		else if (c == '2')
+		{
+			signUp1();
+		}
+		else if (c == '3')
+		{
+			return;
+		}
+		else if (c == '4')
+		{
+			printAllAccount();
+		}
+	}
+}
+
+void showEnglishMenu()//英文菜单
+{
+	printf("A,log on\n");//登录
+	printf("B,establish an account\n");//开户
+	printf("C,logout\n");//退出
+
+	while (1)
+	{
+		char c;
+		scanf_s(" %c", &c, sizeof(c));
+		if (c == 'A')
+		{
+			signIn();
+		}
+		else if (c == 'B')
+		{
+			signUp2();
+		}
+		else if (c == 'C')
+		{
+			return;
+		}
+	}
+}
+
+int main()
+{
+	printf("按1,显示中文\n");
+	printf("Input 2,Show English\n");
+	char c;
+	scanf_s("%c", &c, sizeof(c));
+	if (c == '1')
+	{
+		//显示中文菜单 
+		showChineseMenu();
+	}
+	else if (c == '2')
+	{
+		//显示英文菜单 
+		showEnglishMenu();
+	}
+	return 0;
+}
+#包括<stdio.h>
+#包括<string.h>
+
+结构化帐户//定义账户
+{
+Char Name[100]；
+Char idCard[19]；
+CHAR用户名[100]；
+CHAR密码[7]；
+Char tel[12]；
+查尔余额[100]；
+浮动资金；
+}；
+
+类型-结构账户；
+
+帐户a[100]；
+INT I=0；
+
+
+Voidsignin()//登录
+{
+File*fp=fopen(“D：/atm.txt”，“r”)；
+If(fp！=null)
+{
+INT j=0；
+同时(！feof(FP))
+{
+F(fp，“%s\t%s\n”)，
+A[j].name，a[j].idCard，a[j].username，a[j].Password，a[j].tel；
+J++；
+}
+}
+}
+
+
+无效标志up 1()//开户(中文)
+{
+(“请输入姓名：\n”)；
+Scanf_s(“%s”，a[i].name，size of(a[i].name))；
+
+(“请输入身份证：\n”)；
+Scanf_s(“%s”，a[i].idCard，size of(a[i].idCard))；
+
+(“请输入账号：\n”)；
+Scanf_s(“%s”，a[i].username，size of(a[i].username))；
+
+(“请输入密码：\n”)；
+Scanf_s(“%s”，a[i].密码，大小(a[i].密码))；
+
+(“请输入电话：\n”)；
+Sa_s(“%s”，a[i].tel，size of(a[i].tel))；
+
+A[I].货币=0.0f；
+	
+
+文件*fp=fopen(“D：/atm.txt”，“a”)；//存入文件(a表示追加写入)
+If(fp！=null)
+{
+Fprintf(fp，“%s\t%s\n”)，
+A[i].name，a[i].idCard，a[i].username，a[i].word，a[i].tel；
+封闭式(FP)；
+}
+
+I++；
+Printf(“注册成功！\n”)
+Printf(“请继续按菜单操作\n”)；
+}
+
+无效标志up 2()//开户(英文)
+{
+Printf(“请输入您的姓名：\n”)；
+Scanf_s(“%s”，a[i].name，size of(a[i].name))；
+
+Printf(“请输入您的身份证号码：\n”)；
+Scanf_s(“%s”，a[i].idCard，size of(a[i].idCard))；
+
+打印(“请输入帐号：\n”)；
+Scanf_s(“%s”，a[i].username，size of(a[i].username))；
+
+Printf(“请输入密码：\n”)；
+Scanf_s(“%s”，a[i].密码，大小(a[i].密码))；
+
+Printf(“请输入您的移动号码：\n”)；
+Sa_s(“%s”，a[i].tel，size of(a[i].tel))；
+
+A[I].货币=0.0f；
+
+
+文件*fp=fopen(“D：/atm.txt”，“a”)；//存入文件(a表示追加写入)
+If(fp！=null)
+{
+Fprintf(fp，“%s\t%s\n”)，
+A[i].name，a[i].idCard，a[i].username，a[i].word，a[i].tel；
+封闭式(FP)；
+}
+I++；
+
+Printf(“成功创建！\n”)；
+Printf(“请继续按菜单\n”)；
+}
+
+VoidprintAllAccount()//打印所有账户
+{
+(int j=0；j<i；j++)
+{
+Printf(“%s\t%s\n”、[j].name、a[j].username)；
+}
+}
+
+真空显示ChineseMenu()//中文菜单
+{
+Printf(按1，登录\n)；
+Printf(按2，开户\n)；
+Printf(按3，退出\n)；
+Printf(按4，打印所有帐户\n)；
+同时(1)
+{
+第C章；
+Scanf_s(“%c”，&c，(C)的大小)；
+如果(c=‘1’)
+{
+签名()；
+}
+如果(c=‘2’)
+{
+标志1()；
+}
+如果(c=‘3’)
+{
+返回；
+}
+如果(c=‘4’)
+{
+PrintAllAccount()；
+}
+}
+}
+
+VoidhowenghMenu()//英文菜单
+{
+Printf(A，登录\n)；//登录
+Printf(“B，建立帐户\n”)；//开户
+Printf(“C，注销\n”)；//退出
+
+同时(1)
+{
+第C章；
+Scanf_s(“%c”，&c，(C)的大小)；
+如果(c=‘A’)
+{
+签名()；
+}
+如果(c=‘B’)
+{
+Sip up 2()；
+}
+如果(c=‘C’)
+{
+返回；
+}
+}
+}
+
+INT Main()
+{
+Printf(按1，显示中文\n)；
+Printf(“输入2，显示英语\n”)；
+第C章；
+Scanf_s(“%c”，&c，(C)的大小)；
+如果(c=‘1’)
+{
+//显示中文菜单
+(2)(1)
+}
+如果(c=‘2’)
+{
+//显示英文菜单
+显示英语Menu()
+}
+返回0；
+}
+
